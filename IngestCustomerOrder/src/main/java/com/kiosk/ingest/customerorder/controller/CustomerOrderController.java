@@ -7,6 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 @Log
 @RestController
 @RequestMapping("/kiosk/")
@@ -22,6 +26,6 @@ public class CustomerOrderController {
 
     @GetMapping("/test")
     public String test(){
-        return "Hello World !!!";
+        return "Hello World !!! " + LocalTime.now().toString();
     }
 }
