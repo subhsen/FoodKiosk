@@ -31,13 +31,13 @@ public class CustomerOrderController {
     private CustomerOrderProducer customerOrderProducer;
 
     @PostMapping("/customer/order/new")
-    public ResponseEntity saveCustomerOrder(String customerOrder){
+    public ResponseEntity<String> saveCustomerOrder(String customerOrder){
 
         customerOrder = kafkaServer + " --- " + author + " --- " + email + " --- " + new Date();
         log.info(customerOrder);
 
         //customerOrderProducer.publishCustomerOrder(customerOrder);
 
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<String>(customerOrder, HttpStatus.CREATED);
     }
 }
