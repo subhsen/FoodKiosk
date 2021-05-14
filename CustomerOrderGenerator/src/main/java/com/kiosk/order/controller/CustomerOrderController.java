@@ -1,9 +1,9 @@
 package com.kiosk.order.controller;
 
+import com.kiosk.order.config.OrderGeneratorConfig;
 import com.kiosk.order.producer.CustomerOrderProducer;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,17 +15,8 @@ import java.util.Date;
 @RestController
 public class CustomerOrderController {
 
-    @Value("${kiosk.author.email}")
-    private String email;
-
-    @Value("${kiosk.author}")
-    private String author;
-
-    @Value("${kiosk.mobile : 1234567890}")
-    private String mobile;
-
-    @Value("${spring.kafka.producer.bootstrap-servers : localhost:9092}")
-    private String kafkaServer;
+    @Autowired
+    private OrderGeneratorConfig orderGeneratorConfig;
 
     @Autowired
     private CustomerOrderProducer customerOrderProducer;
@@ -33,7 +24,10 @@ public class CustomerOrderController {
     @PostMapping("/customer/order/new")
     public ResponseEntity<String> saveCustomerOrder(String customerOrder){
 
-        customerOrder = kafkaServer + " --- " + author + " --- " + email + " --- " + new Date();
+        customerOrder = orderGeneratorConfig.getKafkaServer() + " --- " +
+                orderGeneratorConfig.getAuthor() + " --- " +
+                orderGeneratorConfig.getEmail() + " --- " +
+                new Date();
         log.info(customerOrder);
 
         //customerOrderProducer.publishCustomerOrder(customerOrder);

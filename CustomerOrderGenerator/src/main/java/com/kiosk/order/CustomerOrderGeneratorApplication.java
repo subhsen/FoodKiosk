@@ -11,6 +11,8 @@ import javax.annotation.PostConstruct;
 public class CustomerOrderGeneratorApplication {
 
 	public static void main(String[] args) {
+
+//System.setProperty("spring.config.name", "CustomerOrderGenerator");
 		SpringApplication.run(CustomerOrderGeneratorApplication.class, args);
 	}
 

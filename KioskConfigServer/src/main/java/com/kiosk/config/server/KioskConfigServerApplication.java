@@ -9,6 +9,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 public class KioskConfigServerApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(KioskConfigServerApplication.class, args);
 	}
 
