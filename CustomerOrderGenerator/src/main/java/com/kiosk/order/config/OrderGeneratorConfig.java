@@ -12,15 +12,14 @@ import org.springframework.stereotype.Component;
 public class OrderGeneratorConfig {
 
    @Value("${kiosk.author.email}")
-    public  String email;
+    private String email;
 
     @Value("${kiosk.author}")
-    public  String author;
+    private String author;
 
     @Value("${topic.kiosk.customer.order}")
-    public  String topic;
+    private String topic;
 
     @Value("${spring.kafka.producer.bootstrap-servers}")
-    public  String kafkaServer;
-
+    private String kafkaServer;
 }
