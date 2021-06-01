@@ -9,24 +9,26 @@
         <outputRelativeToContentRoot value="true" />
         <module name="CustomerOrderCreate" />
         <module name="KioskConfigServer" />
+        <module name="CustomerOrderCancel" />
         <module name="KioskGateway" />
-        <module name="IngestCustomerOrder" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="CustomerOrderCancel" target="11" />
       <module name="CustomerOrderCreate" target="11" />
-      <module name="IngestCustomerOrder" target="11" />
       <module name="KioskConfigServer" target="11" />
       <module name="KioskGateway" target="11" />
+      <module name="KioskSharedObjects" target="11" />
       <module name="QioskSharedModels" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="CustomerOrderCancel" options="-parameters" />
       <module name="CustomerOrderCreate" options="-parameters" />
-      <module name="IngestCustomerOrder" options="-parameters" />
       <module name="KioskConfigServer" options="-parameters" />
       <module name="KioskGateway" options="-parameters" />
+      <module name="KioskSharedObjects" options="-parameters" />
     </option>
   </component>
 </project>

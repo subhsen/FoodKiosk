@@ -5,7 +5,6 @@
       <list>
         <option value="$PROJECT_DIR$/IngestCustomerOrder/pom.xml" />
         <option value="$PROJECT_DIR$/CustomerOrderGenerator/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/KioskConfigServer/pom.xml" />
         <option value="$PROJECT_DIR$/KioskGateway/pom.xml" />
       </list>

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CustomerOrderCancel/CustomerOrderCancel.iml" filepath="$PROJECT_DIR$/CustomerOrderCancel/CustomerOrderCancel.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomerOrderCreate/CustomerOrderCreate.iml" filepath="$PROJECT_DIR$/CustomerOrderCreate/CustomerOrderCreate.iml" />
-      <module fileurl="file://$PROJECT_DIR$/IngestCustomerOrder/IngestCustomerOrder.iml" filepath="$PROJECT_DIR$/IngestCustomerOrder/IngestCustomerOrder.iml" />
       <module fileurl="file://$PROJECT_DIR$/KioskConfigServer/KioskConfigServer.iml" filepath="$PROJECT_DIR$/KioskConfigServer/KioskConfigServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/KioskGateway/KioskGateway.iml" filepath="$PROJECT_DIR$/KioskGateway/KioskGateway.iml" />
     </modules>
