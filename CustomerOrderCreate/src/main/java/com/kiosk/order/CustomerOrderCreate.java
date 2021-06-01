@@ -8,11 +8,11 @@ import javax.annotation.PostConstruct;
 
 @Log
 @SpringBootApplication
-public class CustomerOrderGeneratorApplication {
+public class CustomerOrderCreate {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(CustomerOrderGeneratorApplication.class, args);
+        SpringApplication.run(CustomerOrderCreate.class, args);
     }
 
     @PostConstruct
