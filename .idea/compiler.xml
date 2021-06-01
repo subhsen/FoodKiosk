@@ -7,22 +7,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="IngestCustomerOrder" />
+        <module name="CustomerOrderCreate" />
         <module name="KioskConfigServer" />
-        <module name="CustomerOrderGenerator" />
+        <module name="KioskGateway" />
+        <module name="IngestCustomerOrder" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CustomerOrderGenerator" target="11" />
+      <module name="CustomerOrderCreate" target="11" />
       <module name="IngestCustomerOrder" target="11" />
       <module name="KioskConfigServer" target="11" />
+      <module name="KioskGateway" target="11" />
+      <module name="QioskSharedModels" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="CustomerOrderGenerator" options="-parameters" />
+      <module name="CustomerOrderCreate" options="-parameters" />
       <module name="IngestCustomerOrder" options="-parameters" />
       <module name="KioskConfigServer" options="-parameters" />
+      <module name="KioskGateway" options="-parameters" />
     </option>
   </component>
 </project>
