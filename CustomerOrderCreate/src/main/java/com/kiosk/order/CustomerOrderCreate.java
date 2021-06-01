@@ -17,7 +17,6 @@ public class CustomerOrderCreate {
 
     @PostConstruct
     public void runtimeInfo() {
-
         log.info("totalMemory(Mb) = " + Runtime.getRuntime().totalMemory() / 1000000);
         log.info("maxMemory(Mb)   = " + Runtime.getRuntime().maxMemory() / 1000000);
         log.info("freeMemory(Mb)  = " + Runtime.getRuntime().freeMemory() / 1000000);
