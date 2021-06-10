@@ -1,0 +1,11 @@
+package in.kiosk.shared;
+
+public enum OrderStatus {
+
+	NOT_APPLICABLE,
+	NEW_ORDER,
+	MEAL_READY_IN_KITCHEN,
+	MEAL_READY_FOR_TAKEAWAY,
+	TAKEAWAY_COMPLETED,
+	ORDER_CLOSED
+}
