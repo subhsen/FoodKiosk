@@ -20,7 +20,7 @@ public class Swagger2Config {
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.kiosk.order"))
+                .apis(RequestHandlerSelectors.basePackage("in.kiosk"))
                 .paths(PathSelectors.regex("/.*"))
                 .build()
                 .apiInfo(apiEndPointsInfo());

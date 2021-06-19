@@ -1,4 +1,4 @@
-package in.kiosk.order.config;
+package in.kiosk.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
