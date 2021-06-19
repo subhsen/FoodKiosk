@@ -1,8 +1,7 @@
 package in.kiosk.controller;
 
-import in.kiosk.config.OrderGeneratorConfig;
-import in.kiosk.producer.CustomerOrderProducer;
-import in.kiosk.shared.model.CustomerOrderItems;
+import in.kiosk.config.Config;
+import in.kiosk.shared.model.CustomerOrder;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,35 +21,34 @@ import java.util.Date;
 @RestController
 public class CustomerOrderController {
 
-    @Autowired
-    private OrderGeneratorConfig orderGeneratorConfig;
+//    @Autowired
+//    private CustomerOrderProducer customerOrderProducer;
 
     @Autowired
-    private CustomerOrderProducer customerOrderProducer;
+    private KafkaTemplate<String, CustomerOrder> kafkaTemplate;
 
+    @PostMapping(value = "/customer/order/new", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CustomerOrder> saveCustomerOrder(@RequestBody CustomerOrder customerOrder) {
 
-    @PostMapping(value = "/customer/order/new",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CustomerOrderItems> saveCustomerOrder(@RequestBody CustomerOrderItems customerOrderItems) {
+        log.info("Publishing ::: " + customerOrder.toString());
 
-        log.info("Publishing ::: " + customerOrderItems.toString());
+       // customerOrderProducer.publishCustomerOrder(customerOrderItems);
 
-        customerOrderProducer.publishCustomerOrder(customerOrderItems);
-        return ResponseEntity.status(HttpStatus.CREATED).body(customerOrderItems);
+        kafkaTemplate.send(Config.topic, customerOrder);
+        return ResponseEntity.status(HttpStatus.CREATED).body(customerOrder);
     }
 
 
     @GetMapping("/list/config")
-    @RateLimiter(name = "listConfigurationsRateLimiter", fallbackMethod = "listConfigurationsFallback")
+    @RateLimiter(name = "listConfigurationsRateLimiter" , fallbackMethod = "listConfigurationsFallback")
     public ResponseEntity<String> listConfigurations() {
 
-        log.info(orderGeneratorConfig.toString() + " --- " + new Date());
-        return ResponseEntity.ok().body(orderGeneratorConfig.toString());
+        log.info(Config.topic + " --- " + new Date());
+        return ResponseEntity.ok(Config.topic);
     }
 
     // falback method
-    public ResponseEntity<String> listConfigurationsFallback() {
+    public ResponseEntity<String> listConfigurationsFallback(Throwable throwable) {
 
         log.info("Rate limit applied on /list/config No further calls are accepted");
 

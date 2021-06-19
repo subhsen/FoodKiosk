@@ -2,22 +2,22 @@ package in.kiosk.shared.db.converter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import in.kiosk.shared.model.CustomerOrderItems;
+import in.kiosk.shared.model.CustomerOrder;
 import lombok.extern.java.Log;
 
 import javax.persistence.AttributeConverter;
 import java.io.IOException;
 
 @Log
-public class CustomerOrderItemsConverter implements AttributeConverter<CustomerOrderItems, String>{
+public class CustomerOrderItemsConverter implements AttributeConverter<CustomerOrder, String>{
 
 	private static ObjectMapper jsonObjectMapper = new ObjectMapper();
 	
 	@Override
-	public String convertToDatabaseColumn(CustomerOrderItems customerOrderItems) {
+	public String convertToDatabaseColumn(CustomerOrder customerOrder) {
 
 		try {
-        	return jsonObjectMapper.writeValueAsString(customerOrderItems);
+        	return jsonObjectMapper.writeValueAsString(customerOrder);
         } 
 		catch (final JsonProcessingException e) {
             log.severe("JSON writing error" + e.getMessage());
@@ -192,16 +192,16 @@ public class CustomerOrderItemsConverter implements AttributeConverter<CustomerO
 //}
 
 	@Override
-	public CustomerOrderItems convertToEntityAttribute(String dbData) {
+	public CustomerOrder convertToEntityAttribute(String dbData) {
 		
-		CustomerOrderItems customerOrderItems = new CustomerOrderItems();
+		CustomerOrder customerOrder = new CustomerOrder();
 		try {
-			customerOrderItems = jsonObjectMapper.readValue(dbData, CustomerOrderItems.class);
+			customerOrder = jsonObjectMapper.readValue(dbData, CustomerOrder.class);
 		} 
 		catch (IOException e) {
 			log.severe("Unable to convert CustomerOrderItems column data to object");
 		}
-		return customerOrderItems;
+		return customerOrder;
 	}
 
 }

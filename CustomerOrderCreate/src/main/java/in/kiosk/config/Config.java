@@ -8,13 +8,13 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 @RefreshScope
-public class OrderGeneratorConfig {
+public class Config {
 
     @Value("${kiosk.customer.order.topic}")
-    private String topic;
+    public static String topic;
 
     @Value("${spring.kafka.producer.bootstrap-servers}")
-    private String kafkaServer;
+    public static String kafkaBootstrapServer;
 
     @Value("${config.location}")
     private String configLocation;

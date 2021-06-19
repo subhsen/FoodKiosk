@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data @NoArgsConstructor @AllArgsConstructor
-public class CustomerOrderItems {
+public class CustomerOrder {
 	
 	@NotEmpty(message = "CustomerOrderItems: tenantId cannot be Blank or Null")
 	private String tenantId;
@@ -24,7 +24,7 @@ public class CustomerOrderItems {
 	private List<@NotNull VendorOrderItems> vendorOrderItemsList;
 
 
-	public CustomerOrderItems(String tenant, List<VendorOrderItems> vendorOrderItemsList) {
+	public CustomerOrder(String tenant, List<VendorOrderItems> vendorOrderItemsList) {
 		this.tenantId = tenant;
 		this.vendorOrderItemsList = vendorOrderItemsList;
 	}	
